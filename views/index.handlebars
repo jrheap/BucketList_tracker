@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center" id="title">
+            <h1>The Bucket List Tracker</h1>
+        </div>
+        <div class="col-md-6 text-center" class="task">
+            <div class="row">
+                {{#each bucket_data}}
+                    {{#unless this.done}}
+            </div>
+        </div>
+        <div class="col-md-9 text-center">
+            <pre>{{this.id}} {{this.activity}}</pre>
+        </div>
+        <div class="col-md-3 text-center">
+            <form method="POST" action="/bucketlist/update?_method=PUT"
+            class="button-size">
+            <input type="hidden" name="bucketlist_id" type="text"
+            value="{{this.id}}">
+            <br>
+            <button type="submit" class="btn btn-default">DONE!</button>
+            </form>
+        </div>
+        {{/unless}}
+        {{/each}}
+    </div>
+    <div class="col-md-6 text-center" class="task">
+        {{#each bucket_data}}
+            {{#if this.done}}
+                <input class="form-control" type="text" placeholder="
+                {{this.id}}, {{this.activity}}" readonly>
+            {{/if}}
+            {{/each}}
+    </div>
+</div>
